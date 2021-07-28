@@ -12,3 +12,15 @@ export function showError(message) {
     showConfirmButton: false
   })
 }
+
+export function showImage(imageUrl, title) {
+  Swal.fire({
+    imageUrl,
+    imageAlt: title,
+    background: "black",
+    width: "300px",
+    padding: "0.01rem",
+    background: "transparent",
+    showConfirmButton: false
+  })
+}

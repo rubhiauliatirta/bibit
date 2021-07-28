@@ -1,11 +1,15 @@
 import noImage from '../../assets/no_image.jpg'
-import { showError } from '../../helpers/swal';
+import { showError, showImage } from '../../helpers/swal';
 
 export default function MovieCard({ movie }) {
 
-  function onClick(e) {
+  function imageClick(e) {
     e.stopPropagation()
-    showError("Coba seriieapeicn")
+    if(movie.Poster !== "N/A") {
+      showImage(movie.Poster)
+    } else {
+      showError("Image not Available")
+    }
   }
 
   return (
@@ -17,14 +21,15 @@ export default function MovieCard({ movie }) {
             <div className="text-lg text-white font-semibold truncate">{movie.Title}</div>
             <div className="text-base text-white">{movie.Year}</div>
             <button 
-              className="self-end bg-yellow-500 hover:bg-yellow-600 text-current text-sm font-bold py-2 px-3 rounded" onClick={onClick}>
+              className="self-end bg-yellow-500 hover:bg-yellow-600 text-current text-sm font-bold py-2 px-3 rounded">
                 Show Detail
             </button>
           </div>
         </div>
       </div>
       <img className="w-full h-full object-cover cursor-pointer hover:opacity-70 transition duration-200 ease-in-out"
-        src={movie.Poster !== "N/A" ? movie.Poster : noImage} alt="Movie Poster">
+        src={movie.Poster !== "N/A" ? movie.Poster : noImage} alt="Movie Poster"
+        onClick={imageClick}>
       </img>
     </div>
   );

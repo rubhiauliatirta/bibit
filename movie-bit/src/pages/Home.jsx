@@ -10,7 +10,6 @@ export default function Home() {
   const { movies, isLoading } = useSelector(state => state)
   const dispatch = useDispatch()
 
-
   useEffect(() => {
     if(movies.length === 0) {
       dispatch(searchMovies("Batman"))
@@ -28,7 +27,7 @@ export default function Home() {
         </div>
         {
           isLoading && (
-            <div className="flex justify-center mt-3">
+            <div className="flex justify-center mt-3 fixed bottom-0 w-full p-4 z-20 bg-blue-500">
               <Loading />
             </div>
           )
