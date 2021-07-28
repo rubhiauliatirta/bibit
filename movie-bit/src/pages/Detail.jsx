@@ -1,8 +1,96 @@
-
+import { useParams } from "react-router-dom"
+import useFetchDetail from "../hooks/useFetchDetail";
+import Lottie from 'lottie-react-web'
+import movieLoading from "../assets/movie-loading.json"
+import noImage from "../assets/no_image.jpg"
+import DetailItem from "../components/DetailItem";
 
 export default function Detail() {
+  const { id } = useParams()
+  const {result, isLoading} = useFetchDetail(id)
+
   return (
-    <>
-    </>
+    <div className="w-full">
+      {
+        isLoading ? (
+          <div className="h-screen flex justify-center items-center flex-col">
+            <Lottie
+              options={{
+                animationData: movieLoading
+              }}
+              width="50%"
+              height="50%"
+            />
+            <div className="text-3xl">Loading Data...</div>
+          </div>
+        ) : (
+          <div className="mt-5 p-10">
+            <div className="text-3xl font-bold">{result.Title}</div>
+            <div className="flex gap-x-2">
+              <div className="text-lg text-gray-400">{result.Year}</div>
+              <div className="text-lg text-gray-400">-</div>
+              <div className="text-lg text-gray-400">{result.Runtime}</div>
+            </div>
+            <div className="mt-5 flex gap-10 items-start">
+              <img 
+                src={result.Poster === "N/A" ? noImage : result.Poster} 
+                alt="Poster" width="300" 
+                />
+              <div className="flex flex-col flex-1 gap-5">
+                <div className="flex gap-x-4">
+                  {
+                    result.Ratings.map(item => (
+                      <div className="bg-gray-100 py-3 px-5 rounded-lg" key={item.Source}>
+                        <div className="font-semibold text-gray-500">{item.Source}</div>
+                        <div className="font-bold text-xl">{item.Value}</div>
+                      </div>
+                    ))
+                  }
+                </div>
+                <div className="flex gap-2 flex-wrap">
+                {
+                  result.Genre.split(", ").map(genre => (
+                    <div className="bg-gray-800 rounded-xl py-1 px-2" key={genre}>
+                      <div className="text-sm text-white">{genre}</div>
+                    </div>
+                  ))
+                }
+                </div>
+                <div className="flex gap-x-5">
+                  <div className="w-1/2 flex flex-col gap-y-5">
+                    <DetailItem 
+                    title="Release Date"
+                    content={result.Released}
+                    />
+                    <DetailItem 
+                      title="Overview"
+                      content={result.Plot}
+                    />
+                    <DetailItem 
+                      title="Production"
+                      content={result.Production}
+                    />
+                  </div>
+                  <div className="w-1/2 flex flex-col gap-y-5">
+                    <DetailItem 
+                    title="Director"
+                    content={result.Director}
+                    />
+                    <DetailItem 
+                      title="Writer"
+                      content={result.Writer}
+                    />
+                    <DetailItem 
+                      title="Actors"
+                      content={result.Actors} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        )
+      }
+    </div>
   );
 }

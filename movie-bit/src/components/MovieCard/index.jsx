@@ -1,7 +1,10 @@
+import { useHistory } from "react-router-dom"
+
 import noImage from '../../assets/no_image.jpg'
 import { showError, showImage } from '../../helpers/swal';
 
 export default function MovieCard({ movie }) {
+  const history = useHistory()
 
   function imageClick(e) {
     e.stopPropagation()
@@ -10,6 +13,9 @@ export default function MovieCard({ movie }) {
     } else {
       showError("Image not Available")
     }
+  }
+  function showDetail() {
+    history.push(`/movie/${movie.imdbID}`)
   }
 
   return (
@@ -21,6 +27,7 @@ export default function MovieCard({ movie }) {
             <div className="text-lg text-white font-semibold truncate">{movie.Title}</div>
             <div className="text-base text-white">{movie.Year}</div>
             <button 
+              onClick={showDetail}
               className="self-end bg-yellow-500 hover:bg-yellow-600 text-current text-sm font-bold py-2 px-3 rounded">
                 Show Detail
             </button>
