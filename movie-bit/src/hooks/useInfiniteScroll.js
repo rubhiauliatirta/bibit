@@ -23,6 +23,6 @@ export default function useInfiniteScroll() {
     return () => {
       window.removeEventListener('scroll', scrollListener)
     }
-  }, [dispatch])
+  }, [dispatch, shouldFetchMore, isLoading])
 
 }
