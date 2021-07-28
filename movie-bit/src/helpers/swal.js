@@ -7,7 +7,8 @@ export function showError(message) {
     background: '#dc3545',
     timer: 4000,
     timerProgressBar: true,
-    html: `<p class="text-white">${message}</p>`,
+    padding: "0.1rem",
+    html: `<div class="text-white">${message}</div>`,
     showConfirmButton: false
   })
 }

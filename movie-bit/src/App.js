@@ -2,7 +2,6 @@ import NavigationBar from "./components/NavigationBar";
 import { Route, Switch } from "react-router-dom"
 import { Home, Detail } from "./pages"
 
-
 function App() {
   return (
     <>
