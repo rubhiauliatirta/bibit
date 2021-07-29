@@ -24,12 +24,12 @@ export default function Detail() {
             <div className="text-3xl">Loading Data...</div>
           </div>
         ) : (
-          <div className="mt-5 p-10">
-            <div className="text-3xl font-bold">{result.Title}</div>
+          <div className="px-10 md:px-20 lg:px-32 py-10">
+            <div className="text-4xl font-bold">{result.Title}</div>
             <div className="flex gap-x-2">
-              <div className="text-lg text-gray-400">{result.Year}</div>
-              <div className="text-lg text-gray-400">-</div>
-              <div className="text-lg text-gray-400">{result.Runtime}</div>
+              <div className="text-xl text-gray-400">{result.Year}</div>
+              <div className="text-xl text-gray-400">-</div>
+              <div className="text-xl text-gray-400">{result.Runtime}</div>
             </div>
             <div className="mt-5 flex gap-10 items-start">
               <img 
@@ -63,10 +63,6 @@ export default function Detail() {
                     content={result.Released}
                     />
                     <DetailItem 
-                      title="Overview"
-                      content={result.Plot}
-                    />
-                    <DetailItem 
                       title="Production"
                       content={result.Production}
                     />
@@ -87,7 +83,14 @@ export default function Detail() {
                 </div>
               </div>
             </div>
-            
+            {
+              result.Plot !== "N/A" && (
+                <div className="mt-7">
+                  <div className="text-2xl font-bold">Overview</div>
+                  <div className="ml-4 text-lg text-gray-400 italic mt-3">{result.Plot}</div>
+                </div>
+              )
+            }
           </div>
         )
       }

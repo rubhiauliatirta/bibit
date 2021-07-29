@@ -11,7 +11,8 @@ export default function useFetchDetail(id) {
     setIsLoading(true)
     omdbAPI({
       params: {
-        i: id
+        i: id,
+        plot: "full"
       }
     })
       .then(result => {
