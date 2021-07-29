@@ -33,11 +33,7 @@ export function searchMovies(searchQuery) {
 export function fetchMoreMovies() {
   return (dispatch, getState) => {
     const { currentQuery, currentPage } = getState()
-    dispatch({
-      type: SET_LOADING_MOVIES,
-      payload: true
-    })
-    search(currentQuery, currentPage + 1)
+    return search(currentQuery, currentPage + 1)
       .then(result => {
         dispatch({
           type: ADD_MOVIES,
@@ -45,11 +41,5 @@ export function fetchMoreMovies() {
         })
       })
       .catch(showError)
-      .finally(_ => {
-        dispatch({
-          type: SET_LOADING_MOVIES,
-          payload: false
-        })
-      })
   }
 }

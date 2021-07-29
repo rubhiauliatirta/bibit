@@ -1,6 +1,6 @@
 import NavigationBar from "./components/NavigationBar";
 import { Route, Switch } from "react-router-dom"
-import { Home, Detail } from "./pages"
+import { Home, Detail, PageNotFound } from "./pages"
 
 function App() {
   return (
@@ -12,6 +12,9 @@ function App() {
         </Route>
         <Route path="/movie/:id">
           <Detail />
+        </Route>
+        <Route path="*">
+          <PageNotFound />
         </Route>
       </Switch>
     </>

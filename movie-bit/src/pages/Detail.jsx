@@ -1,28 +1,20 @@
 import { useParams } from "react-router-dom"
 import useFetchDetail from "../hooks/useFetchDetail";
-import Lottie from 'lottie-react-web'
-import movieLoading from "../assets/movie-loading.json"
 import noImage from "../assets/no_image.jpg"
 import DetailItem from "../components/DetailItem";
+import LoadingMovie from "../components/LoadingMovie";
 
 export default function Detail() {
   const { id } = useParams()
-  const {result, isLoading} = useFetchDetail(id)
+  const { result, isLoading } = useFetchDetail(id)
 
   return (
     <div className="w-full">
       {
         isLoading ? (
-          <div className="h-screen flex justify-center items-center flex-col">
-            <Lottie
-              options={{
-                animationData: movieLoading
-              }}
-              width="50%"
-              height="50%"
-            />
-            <div className="text-3xl">Loading Data...</div>
-          </div>
+          <div className="h-screen w-full flex justify-center items-center">
+          <LoadingMovie message="Loading Movie..."/>
+        </div>
         ) : (
           <div className="px-10 md:px-20 lg:px-32 py-10">
             <div className="text-4xl font-bold">{result.Title}</div>

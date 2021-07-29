@@ -1,10 +1,10 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { fetchMoreMovies } from "../store/actions/movies"
 
 export default function useInfiniteScroll() {
 
-  const isLoading = useSelector(state => state.isLoading)
+  const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
   const shouldFetchMore = useSelector(
     state =>
@@ -16,7 +16,11 @@ export default function useInfiniteScroll() {
     function scrollListener() {
       const isReachBottomScroll = (window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 2
       if (!isLoading && shouldFetchMore && isReachBottomScroll) {
+        setIsLoading(true)
         dispatch(fetchMoreMovies())
+          .finally(() => {
+            setIsLoading(false)
+          })
       }
     }
     window.addEventListener('scroll', scrollListener)
@@ -24,5 +28,7 @@ export default function useInfiniteScroll() {
       window.removeEventListener('scroll', scrollListener)
     }
   }, [dispatch, shouldFetchMore, isLoading])
+
+  return isLoading
 
 }

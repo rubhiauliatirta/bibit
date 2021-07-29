@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const omdbAPI = axios.create({
-  baseURL: "http://www.omdbapi.com",
+  baseURL: "https://www.omdbapi.com",
 })
 
 omdbAPI.interceptors.request.use((config) => {
@@ -14,7 +14,7 @@ omdbAPI.interceptors.response.use(response => {
     return response.data
   }
   if (response.data?.Response === "False") {
-    return Promise.reject(response.data.Response.Error)
+    return Promise.reject(response.data.Error)
   }
   return response
 })

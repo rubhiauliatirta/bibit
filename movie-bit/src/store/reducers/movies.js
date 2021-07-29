@@ -2,7 +2,7 @@ import { ADD_MOVIES, SET_LOADING_MOVIES, SET_MOVIES, RESET_MOVIES } from "../act
 
 const initialState = {
   movies: [],
-  isLoading: false,
+  isSearchLoading: false,
   currentPage: 0,
   currentQuery: "",
   total: -1
@@ -30,7 +30,7 @@ function moviesReducer(state = initialState, action) {
     case SET_LOADING_MOVIES:
       return {
         ...state,
-        isLoading: action.payload
+        isSearchLoading: action.payload
       }
     default:
       return state
