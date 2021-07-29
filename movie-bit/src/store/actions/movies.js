@@ -1,7 +1,6 @@
-import omdbAPI from "../../helpers/omdbAPI"
+import { search } from "../../helpers/api"
 import { showError } from "../../helpers/swal"
-import { ADD_MOVIES, SET_LOADING_MOVIES, SET_MOVIES } from "../actionKeys"
-
+import { ADD_MOVIES, RESET_MOVIES, SET_LOADING_MOVIES, SET_MOVIES } from "../actionKeys"
 
 export function searchMovies(searchQuery) {
   return (dispatch) => {
@@ -9,11 +8,8 @@ export function searchMovies(searchQuery) {
       type: SET_LOADING_MOVIES,
       payload: true
     })
-    return omdbAPI({
-      params: {
-        s: searchQuery
-      }
-    })
+    dispatch({ type: RESET_MOVIES })
+    return search(searchQuery)
       .then(result => {
         dispatch({
           type: SET_MOVIES,
@@ -41,12 +37,7 @@ export function fetchMoreMovies() {
       type: SET_LOADING_MOVIES,
       payload: true
     })
-    return omdbAPI({
-      params: {
-        s: currentQuery,
-        page: currentPage + 1
-      }
-    })
+    search(currentQuery, currentPage + 1)
       .then(result => {
         dispatch({
           type: ADD_MOVIES,
@@ -60,6 +51,5 @@ export function fetchMoreMovies() {
           payload: false
         })
       })
-
   }
 }

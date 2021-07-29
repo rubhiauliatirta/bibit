@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import omdbAPI from "../helpers/omdbAPI";
+import { getDetail } from "../helpers/api";
 import { showError } from "../helpers/swal";
 
 export default function useFetchDetail(id) {
@@ -9,12 +9,7 @@ export default function useFetchDetail(id) {
 
   useEffect(() => {
     setIsLoading(true)
-    omdbAPI({
-      params: {
-        i: id,
-        plot: "full"
-      }
-    })
+    getDetail(id)
       .then(result => {
         setResult(result)
       })

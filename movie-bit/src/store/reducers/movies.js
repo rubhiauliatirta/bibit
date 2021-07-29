@@ -1,4 +1,4 @@
-import { ADD_MOVIES, SET_LOADING_MOVIES, SET_MOVIES } from "../actionKeys";
+import { ADD_MOVIES, SET_LOADING_MOVIES, SET_MOVIES, RESET_MOVIES } from "../actionKeys";
 
 const initialState = {
   movies: [],
@@ -10,9 +10,10 @@ const initialState = {
 
 function moviesReducer(state = initialState, action) {
   switch (action.type) {
+    case RESET_MOVIES:
+      return { ...state, movies: [] }
     case SET_MOVIES:
       const { movies, currentQuery, total } = action.payload
-
       return {
         ...state,
         total,
