@@ -10,6 +10,9 @@ omdbAPI.interceptors.request.use((config) => {
 });
 
 omdbAPI.interceptors.response.use(response => {
+  if (typeof response.data === 'string') {
+    return Promise.reject("Not Found")
+  }
   if (response.data?.Response === "True") {
     return response.data
   }

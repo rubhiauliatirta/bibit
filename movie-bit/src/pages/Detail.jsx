@@ -3,18 +3,26 @@ import useFetchDetail from "../hooks/useFetchDetail";
 import noImage from "../assets/no_image.jpg"
 import DetailItem from "../components/DetailItem";
 import LoadingMovie from "../components/LoadingMovie";
+import ItemNotFound from "../components/ItemNotFound"
 
 export default function Detail() {
   const { id } = useParams()
   const { result, isLoading } = useFetchDetail(id)
-
+  
   return (
     <div className="w-full">
       {
-        isLoading ? (
+        isLoading && (
           <div className="h-screen w-full flex justify-center items-center">
-          <LoadingMovie message="Loading Movie..."/>
-        </div>
+            <LoadingMovie message="Loading Movie..."/>
+          </div>
+        ) 
+      }
+      {
+        !result ? (
+          <div className="">
+            <ItemNotFound message="Item Not Found"/>
+          </div>
         ) : (
           <div className="px-10 md:px-20 lg:px-32 py-10">
             <div className="text-4xl font-bold">{result.Title}</div>
