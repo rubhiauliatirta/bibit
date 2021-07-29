@@ -59,26 +59,26 @@ export default function Detail() {
                 <div className="flex gap-x-5">
                   <div className="w-1/2 flex flex-col gap-y-5">
                     <DetailItem 
-                    title="Release Date"
-                    content={result.Released}
-                    />
-                    <DetailItem 
-                      title="Production"
-                      content={result.Production}
-                    />
-                  </div>
-                  <div className="w-1/2 flex flex-col gap-y-5">
-                    <DetailItem 
-                    title="Director"
-                    content={result.Director}
+                      title="Release Date"
+                      content={result.Released}
                     />
                     <DetailItem 
                       title="Writer"
                       content={result.Writer}
                     />
+                  </div>
+                  <div className="w-1/2 flex flex-col gap-y-5">
+                    <DetailItem 
+                      title="Director"
+                      content={result.Director}
+                    /> 
                     <DetailItem 
                       title="Actors"
                       content={result.Actors} />
+                    <DetailItem 
+                      title="Production"
+                      content={result.Production}
+                    />
                   </div>
                 </div>
               </div>
