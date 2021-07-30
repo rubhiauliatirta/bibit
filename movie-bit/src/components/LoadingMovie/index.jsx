@@ -6,6 +6,7 @@ export default function LoadingMovie({ message }) {
   return (
     <div className="flex flex-col items-center">
       <Lottie
+        data-testid="movie-loading"
         options={{ animationData: movieLoading}}
         width="50%"
         height="50%"

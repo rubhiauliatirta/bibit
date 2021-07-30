@@ -33,6 +33,8 @@ describe('movie-card', () => {
     expect(yearElement).toBeInTheDocument()
     expect(posterElement).toBeInTheDocument()
     expect(posterElement.getAttribute("src")).toEqual("no_image.jpg")
+    fireEvent.click(posterElement)
+    expect(screen.getByText("Image not Available")).toBeInTheDocument()
   })
 })
 

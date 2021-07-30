@@ -38,7 +38,7 @@ export default function Home() {
               movies.length === 0 ? (
                 <ItemNotFound />
               ) : (
-                movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)
+                movies.map(movie => <MovieCard movie={movie} key={movie.imdbID}/>)
               )
             }
             </div>
