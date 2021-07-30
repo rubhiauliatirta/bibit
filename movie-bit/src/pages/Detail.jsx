@@ -12,17 +12,12 @@ export default function Detail() {
   return (
     <div className="w-full">
       {
-        isLoading && (
+        isLoading ? (
           <div className="h-screen w-full flex justify-center items-center">
             <LoadingMovie message="Loading Movie..."/>
           </div>
-        ) 
-      }
-      {
-        !result ? (
-          <div className="">
-            <ItemNotFound message="Item Not Found"/>
-          </div>
+        ) : !result ? (
+          <ItemNotFound message="Item Not Found"/>
         ) : (
           <div className="px-10 md:px-20 lg:px-32 py-10">
             <div className="text-4xl font-bold">{result.Title}</div>

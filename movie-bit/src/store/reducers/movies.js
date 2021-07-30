@@ -2,7 +2,7 @@ import { ADD_MOVIES, SET_LOADING_MOVIES, SET_MOVIES, RESET_MOVIES } from "../act
 
 const initialState = {
   movies: [],
-  isSearchLoading: false,
+  isSearchLoading: true,
   currentPage: 0,
   currentQuery: "",
   total: -1

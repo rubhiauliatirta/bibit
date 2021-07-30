@@ -28,22 +28,22 @@ export default function Home() {
           <SearchBar />
         </div>
         {
-          isSearchLoading && (
+          isSearchLoading ? (
             <div className="w-full h-screen flex justify-center items-center">
               <LoadingMovie message="Searching movie..."/>
             </div>
-          )
-        }
-        <div className="mt-10 flex justify-center flex-wrap gap-3 align-stretch">
-        {
-          movies.length === 0 ? (
-            <ItemNotFound />
           ) : (
-            movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)
+            <div className="mt-10 flex justify-center flex-wrap gap-3 align-stretch">
+            {
+              movies.length === 0 ? (
+                <ItemNotFound />
+              ) : (
+                movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)
+              )
+            }
+            </div>
           )
-          
         }
-        </div>
         {
           isFetchMoreLoading && (
             <div className="flex justify-center mt-3 fixed left-0 bottom-0 w-full p-4 z-20 bg-blue-500">

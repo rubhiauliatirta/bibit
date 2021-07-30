@@ -34,7 +34,7 @@ export default function MovieCard({ movie }) {
           </div>
         </div>
       </div>
-      <img className="w-full h-full object-cover cursor-pointer hover:opacity-70 transition duration-200 ease-in-out"
+      <img data-testid="poster" className="w-full h-full object-cover cursor-pointer hover:opacity-70 transition duration-200 ease-in-out"
         src={movie.Poster !== "N/A" ? movie.Poster : noImage} alt="Movie Poster"
         onClick={imageClick}>
       </img>
