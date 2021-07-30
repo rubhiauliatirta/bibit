@@ -1,3 +1,13 @@
+Features to be implemented: 
+
+- [x] Display List of movies 
+- [x] Use Infinite Scroll tanpa plugin untuk jumlah search result yg panjang > 5 
+- [x] Search movies by keyword 
+- [x] Single Page for Single Movie Detail 
+- [x] Show Movie Poster in a popup modal window when image from the list is clicked 
+- [x] Unit test for components 
+- [x] Autocomplete searchbox implementation
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
